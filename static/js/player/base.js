@@ -46,7 +46,11 @@ export class Player extends AcGameObject {
         }
 
         if (this.status === 0 || this.status === 1) {
-            if (w) {
+            if (space) {
+                this.status = 4;
+                this.vx = 0;
+                this.frame_current_cnt = 0;
+            } else if (w) {
                 if (d) {
                     this.vx = this.speedx;
                 } else if (a) {
@@ -109,6 +113,11 @@ export class Player extends AcGameObject {
             let image = obj.gif.frames[k].image;
             this.ctx.drawImage(image, this.x, this.y + obj.offset_y, image.width * obj.scale, image.height * obj.scale);
         }
+
+        if (status === 4 && this.frame_current_cnt === obj.frame_rate * (obj.frame_cnt - 1)) {
+            this.status = 0;
+        }
+
         this.frame_current_cnt++;
     }
 }
