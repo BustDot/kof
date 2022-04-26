@@ -61,6 +61,7 @@ export class Player extends AcGameObject {
                     this.vx = 0;
                 }
                 this.vy = this.speedy;
+                this.frame_current_cnt = 0;
                 this.status = 3;
             } else if (d) {
                 this.vx = this.speedx;
